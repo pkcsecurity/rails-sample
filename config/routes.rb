@@ -9,13 +9,14 @@ Blog::Application.routes.draw do
   
   # resources route
   resources :posts
-  resources :sessions, only: [:new, :create, :destroy]
+  #resources :sessions, only: [:new, :create, :destroy]
   root to: "welcome#index"
 
   get '/posts/:id(.:format)' => 'posts#show'
   get '/posts/(.:format)' => 'posts#index'
 
-  get '/signin' => 'sessions#new'
+  get '/signin' => 'sessions#index'
+  post '/signin' => 'sessions#verify'
   delete '/signout' => 'sessions#destroy'
 
   # Example of regular route:
